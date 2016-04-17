@@ -23,3 +23,4 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 cp vim-ide/doctag.sh /usr/bin/doctag.sh;
 cp vim-ide/docscope.sh /usr/bin/docscope.sh
 ```
+
