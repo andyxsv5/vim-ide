@@ -90,9 +90,9 @@ nmap <Leader>cp :cp<cr>
 " ctags settings
 """"""""""""""""""""""""""""""""
 " 设置tags文件
-if filereadable("/Users/xushuai/.vim/systags")
-    set tags+=/Users/xushuai/.vim/systags
-endif
+" if filereadable("/Users/xushuai/.vim/systags")
+"     set tags+=/Users/xushuai/.vim/systags
+" endif
 " 定义快捷键 ;gt 跳转到光标所在关键词的定义处
 nmap <Leader>gt <C-]>
 " 定义快捷键 ;gr 跳回原关键词 与 ;gt 配合使用
