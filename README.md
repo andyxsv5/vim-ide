@@ -23,7 +23,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 sudo cp vim-ide/doctags.sh /usr/bin/doctags.sh
 sudo chmod +x /usr/bin/doctags.sh
 
-cp vim-ide/docscope.sh /usr/bin/docscope.sh
+sudo cp vim-ide/docscope.sh /usr/bin/docscope.sh
 sudo chmod +x /usr/bin/docscope.sh
 ```
 
