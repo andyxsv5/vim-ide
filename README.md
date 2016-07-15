@@ -17,11 +17,13 @@ cp -a vim-ide/vimrc ~/.vimrc
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 打开vim，然后在normal模式下输入命令:BundleInstall，自动安装完成
-
-> 如果主机无法联网，比如自己在公司内网的服务器上进行编程，可以使用vim-plugin.tar.gz包解压到~/.vim目录下
-> mkdir -p ~/.vim/
-> tar -xzvf vim-plugin.tar.gz -C ~/.vim/
 ```
+> 如果主机无法联网，比如自己在公司内网的服务器上进行编程，可以使用vim-plugin.tar.gz包解压到~/.vim目录下
+```
+ mkdir -p ~/.vim/
+ tar -xzvf vim-plugin.tar.gz -C ~/.vim/
+```
+
 ###5 创建cscope和ctag索引构建脚本
 ```
 sudo cp vim-ide/doctags.sh /usr/bin/doctags.sh
