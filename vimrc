@@ -24,6 +24,8 @@ set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands
 set incsearch		" do incremental searching
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+" vim 自身命令行模式智能补全
+set wildmenu
 
 set showmatch        " Show matching brackets.
 set foldmethod=syntax	" 以符合编程语言语法的代码折叠方式
@@ -74,6 +76,27 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""
 set gcr=a:block-blinkon0	" 禁止光标闪烁
 let mapleader=";"			" 定义快捷键的前缀，即<Leader>
+
+" 定义快捷键关闭当前分割窗口
+nmap <Leader>q :q<CR>
+" 定义快捷键保存当前窗口内容
+nmap <Leader>w :w<CR>
+" 定义快捷键保存所有窗口内容并退出 vim
+nmap <Leader>WQ :wa<CR>:q<CR>
+" 不做任何保存，直接退出 vim
+nmap <Leader>Q :qa!<CR>
+" 依次遍历子窗口
+nnoremap nw <C-W><C-W>
+" 跳转至右方的窗口
+nnoremap <Leader>lw <C-W>l
+" 跳转至左方的窗口
+nnoremap <Leader>hw <C-W>h
+" 跳转至上方的子窗口
+nnoremap <Leader>kw <C-W>k
+" 跳转至下方的子窗口
+nnoremap <Leader>jw <C-W>j
+" 定义快捷键在结对符之间跳转
+nmap <Leader>M %
 
 " 设置快捷键 进行工程编译及链接，并同时在quickfix输出make结果
 " 前提是工程目录中有Makefile文件
@@ -204,3 +227,5 @@ if has("autocmd")
     \ endif
 endif 
 
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
