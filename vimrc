@@ -227,5 +227,11 @@ if has("autocmd")
     \ endif
 endif 
 
+" 配色方案
+set background=dark
+colorscheme solarized
+" colorscheme molokai
+" colorscheme phd
+
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
