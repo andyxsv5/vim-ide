@@ -13,6 +13,7 @@ fi
 
 echo "create tags begin!"
 ctags -R --c++-kinds=+px --fields=+iaS --extra=+q -L index.files
+# ctags -R --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+liaS --extra=+q --language-force=c++ -L index.files
 # ctags -I __THROW -I __attribute_pure__ -I __nonnull -I __attribute__ --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q -R -f ~/.vim/systags /usr/include /usr/local/include
 echo "create tags end!"
 

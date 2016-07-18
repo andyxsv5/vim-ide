@@ -26,14 +26,13 @@ set showcmd			" display incomplete commands
 set incsearch		" do incremental searching
 set expandtab
 set tabstop=4 softtabstop=4 shiftwidth=4
-" vim 自身命令行模式智能补全
-set wildmenu
 
 set showmatch        " Show matching brackets.
 set foldmethod=syntax	" 以符合编程语言语法的代码折叠方式
 set nofen 				" 启动vim时打开所有折叠代码
 set foldlevel=100
 set cursorline
+set wildmenu            " vim 自身命令行模式智能补全
 
 "za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
 
@@ -60,16 +59,12 @@ Bundle 'gmarik/vundle'
 " vimscripts的repo使用下面的格式，直接是插件名称
 Bundle 'taglist.vim'
 Bundle 'winmanager'
-" Bundle 'minibufexpl.vim'
 Bundle 'a.vim'
-" Bundle 'code_complete'
 Bundle 'OmniCppComplete'
 Bundle 'The-NERD-Commenter'
 Bundle 'DoxygenToolkit.vim'
+Bundle 'grep.vim'
 
-" original repos on github
-" 非vimscripts的repo，比如github上的用户写的插件，使用这种用户名+repo名称的方式
-" Bundle 'tpope/vim-fugitive'
 Bundle 'andyxsv5/code_complete.vim'
 Bundle 'andyxsv5/minibufexpl.vim'
 
@@ -79,10 +74,6 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'nathanaelkane/vim-indent-guides'
 
-" non github repos
-" 非github的插件，可以直接使用其git地址
-" Bundle 'git://git.wincent.com/command-t.git'
-
 " 安装完vundle后打开文件类型自检测
 filetype plugin indent on
 
@@ -91,27 +82,6 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""
 set gcr=a:block-blinkon0	" 禁止光标闪烁
 let mapleader=";"			" 定义快捷键的前缀，即<Leader>
-
-" 定义快捷键关闭当前分割窗口
-nmap <Leader>q :q<CR>
-" 定义快捷键保存当前窗口内容
-nmap <Leader>w :w<CR>
-" 定义快捷键保存所有窗口内容并退出 vim
-nmap <Leader>WQ :wa<CR>:q<CR>
-" 不做任何保存，直接退出 vim
-nmap <Leader>Q :qa!<CR>
-" 依次遍历子窗口
-nnoremap nw <C-W><C-W>
-" 跳转至右方的窗口
-nnoremap <Leader>lw <C-W>l
-" 跳转至左方的窗口
-nnoremap <Leader>hw <C-W>h
-" 跳转至上方的子窗口
-nnoremap <Leader>kw <C-W>k
-" 跳转至下方的子窗口
-nnoremap <Leader>jw <C-W>j
-" 定义快捷键在结对符之间跳转
-nmap <Leader>M %
 
 " 设置快捷键 进行工程编译及链接，并同时在quickfix输出make结果
 " 前提是工程目录中有Makefile文件
@@ -127,10 +97,6 @@ nmap <Leader>cp :cp<cr>
 """"""""""""""""""""""""""""""""
 " ctags settings
 """"""""""""""""""""""""""""""""
-" 设置tags文件
-" if filereadable("/Users/xushuai/.vim/systags")
-"     set tags+=/Users/xushuai/.vim/systags
-" endif
 " 定义快捷键 ;gt 跳转到光标所在关键词的定义处
 nmap <Leader>gt <C-]>
 " 定义快捷键 ;gr 跳回原关键词 与 ;gt 配合使用
@@ -141,18 +107,6 @@ nmap <Leader>gr <C-T>
 """"""""""""""""""""""""""""""""
 " cscope settings
 """"""""""""""""""""""""""""""""
-" 设置cscope索引文件
-if has("cscope")
-    set csto=0
-    set cst
-    set nocsverb
-    " add any database in current directory
-    if filereadable("cscope.out")
-       cs add cscope.out
-    endif
-    set csverb
-endif
-
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -218,22 +172,16 @@ nmap wm :WMToggle<cr>		" 定义快捷键 wm 打开/关闭winManager
 "允许光标在任何位置时用CTRL-TAB遍历buffer
 let g:miniBufExplMapCTabSwitchBufs = 1
 
-""""""""""""""""""""""""""""""
-" BufExplorer.vim plugin settings
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0       " Do not show default help.
-let g:bufExplorerShowRelativePath=1  " Show relative paths.
-let g:bufExplorerSortBy='mru'        " Sort by most recently used.
-let g:bufExplorerSplitRight=0        " Split left.
-let g:bufExplorerSplitVertical=1     " Split vertically.
-let g:bufExplorerSplitVertSize = 30  " Split width
-let g:bufExplorerUseCurrentWindow=1  " Open in new window.
-
 """"""""""""""""""""""""""""""""
 " a.vim plugin settings
 """"""""""""""""""""""""""""""""
 " 快速切换C H源文件
 nmap <Leader>cd :A<CR>
+
+""""""""""""""""""""""""""""""""
+" grep.vim plugin settings
+""""""""""""""""""""""""""""""""
+nnoremap <silent> <F3> :Grep<CR>
 
 if has("autocmd")
     autocmd BufReadPost *
@@ -242,6 +190,9 @@ if has("autocmd")
     \ endif
 endif 
 
+" 设置状态栏主题风格
+let g:Powerline_colorscheme='solarized256'
+
 " 配色方案
 set background=dark
 colorscheme solarized
@@ -249,4 +200,4 @@ colorscheme solarized
 " colorscheme phd
 
 " 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
