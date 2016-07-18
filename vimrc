@@ -12,6 +12,7 @@
 " common settings
 """"""""""""""""""""""""""""""""
 set nocompatible	" Use Vim settings, rather then Vi settings
+syntax enable 	    " syntax highlighting on
 syntax on 			" syntax highlighting on
 set hlsearch		" high light search
 set backspace=indent,eol,start 	" allow backspacing over everything in insert mode
@@ -23,7 +24,8 @@ set history=50		" keep 50 lines of command line history
 set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands
 set incsearch		" do incremental searching
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4
 " vim 自身命令行模式智能补全
 set wildmenu
 
@@ -32,6 +34,13 @@ set foldmethod=syntax	" 以符合编程语言语法的代码折叠方式
 set nofen 				" 启动vim时打开所有折叠代码
 set foldlevel=100
 set cursorline
+
+"za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
+
+" 禁止折行
+set nowrap
+
+set laststatus=2
 
 """"""""""""""""""""""""""""""""
 " vundle settings
@@ -63,6 +72,12 @@ Bundle 'DoxygenToolkit.vim'
 " Bundle 'tpope/vim-fugitive'
 Bundle 'andyxsv5/code_complete.vim'
 Bundle 'andyxsv5/minibufexpl.vim'
+
+Bundle 'fatih/vim-go'
+
+Bundle 'octol/vim-cpp-enhanced-highlight'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 " non github repos
 " 非github的插件，可以直接使用其git地址
