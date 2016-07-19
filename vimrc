@@ -37,7 +37,7 @@ set wildmenu            " vim 自身命令行模式智能补全
 "za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
 
 " 禁止折行
-set nowrap
+" set nowrap
 
 set laststatus=2
 
@@ -102,6 +102,12 @@ nmap w. :vertical resize +3<CR>
 """"""""""""""""""""""""""""""""
 " ctags settings
 """"""""""""""""""""""""""""""""
+if filereadable($HOME."/.vim/systags")
+    set tags+=$HOME/.vim/systags
+endif
+if filereadable($MYWORKSPACE."/tags")
+    set tags+=$MYWORKSPACE/tags
+endif
 " 定义快捷键 ;gt 跳转到光标所在关键词的定义处
 nmap <Leader>gt <C-]>
 " 定义快捷键 ;gr 跳回原关键词 与 ;gt 配合使用
@@ -112,7 +118,7 @@ nmap <Leader>gr <C-T>
 """"""""""""""""""""""""""""""""
 " cscope settings
 """"""""""""""""""""""""""""""""
-if has("cscope")
+if has("cscope")  && filereadable("/usr/bin/cscope")
   set csprg=/usr/bin/cscope
   set csto=1
   set cst
@@ -120,6 +126,8 @@ if has("cscope")
   " add any database in current directory
   if filereadable("cscope.out")
       cs add cscope.out
+  elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
   endif
   set csverb
 endif

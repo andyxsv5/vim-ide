@@ -24,12 +24,20 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
  tar -xzvf vim-plugin.tar.gz -C ~/.vim/
 ```
 
-###5 创建cscope和ctag索引构建脚本
+###5. 设置环境变量
+```
+export MYWORKSPACE=/youworkspace/path
+export CSCOPE_DB=$MYWORKSPACE/cscope.out
+```
+
+###6 创建cscope和ctag索引构建脚本
 ```
 sudo cp vim-ide/doctags.sh /usr/bin/doctags.sh
 sudo chmod +x /usr/bin/doctags.sh
+doctags.sh
 
 sudo cp vim-ide/docscope.sh /usr/bin/docscope.sh
 sudo chmod +x /usr/bin/docscope.sh
+docscope.sh
 ```
 
