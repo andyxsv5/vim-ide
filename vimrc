@@ -94,6 +94,11 @@ nmap <Leader>cn :cn<cr>
 " 设置快捷键 ;cp 切换到上一个结果
 nmap <Leader>cp :cp<cr>
 
+nmap w= :resize +3<CR>
+nmap w- :resize -3<CR>
+nmap w, :vertical resize -3<CR>
+nmap w. :vertical resize +3<CR>
+
 """"""""""""""""""""""""""""""""
 " ctags settings
 """"""""""""""""""""""""""""""""
@@ -107,6 +112,18 @@ nmap <Leader>gr <C-T>
 """"""""""""""""""""""""""""""""
 " cscope settings
 """"""""""""""""""""""""""""""""
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
+
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -157,6 +174,12 @@ let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 
+nnoremap <silent><F1> :Dox<CR>
+nnoremap <silent><F2> :DoxAuthor<CR>
+nnoremap <silent><F3> :DoxBlock<CR>
+nnoremap <silent><F4> :DoxLic<CR>
+nnoremap <silent><F5> :DoxUndoc<CR>
+
 """"""""""""""""""""""""""""""""
 " winManager.vim plugin settings
 """"""""""""""""""""""""""""""""
@@ -181,7 +204,7 @@ nmap <Leader>cd :A<CR>
 """"""""""""""""""""""""""""""""
 " grep.vim plugin settings
 """"""""""""""""""""""""""""""""
-nnoremap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F6> :Grep<CR>
 
 if has("autocmd")
     autocmd BufReadPost *
